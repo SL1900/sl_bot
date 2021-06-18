@@ -1,5 +1,4 @@
 # SL_bot
----
 
 My bad attempt at creating a scalable Discord Bot.
 
