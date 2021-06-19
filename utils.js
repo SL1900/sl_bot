@@ -1,7 +1,6 @@
 module.exports = {
   findMembers: findMembers,
 };
-
 async function findMembers(guild, usernames) {
   var users = [];
   var members = await guild.fetchMembers();

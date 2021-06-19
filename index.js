@@ -3,6 +3,8 @@ const db_init = require("./db_init");
 const Eris = require("eris");
 const CommandHandler = require("./CommandHandler");
 const helpSessionManager = require("./helpSessionManager");
+const { startTimer } = require("./timer");
+const sendMessage = require("./sendMessage");
 var BOT_PREFIX = process.env.BOTPREFIX;
 
 var db = null;
@@ -17,7 +19,9 @@ init();
 async function init() {
   db = await db_init.init(process.env.DBURI);
   await bot.connect();
+  sendMessage.init(bot);
   helpSessionManager.init();
+  startTimer();
 }
 
 bot.on("ready", () => {

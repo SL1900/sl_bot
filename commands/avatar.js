@@ -20,9 +20,11 @@ function showAvatar(user, channel) {
   channel.createMessage({
     embed: {
       title: `${user.username}'s avatar`,
+      description: `User link: <@${user.id}>`,
       image: {
         url: avatarURL,
       },
+      color: 16777215,
     },
   });
 }

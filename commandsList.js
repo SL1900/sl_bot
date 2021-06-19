@@ -15,6 +15,12 @@ module.exports = [
     command: "avatar",
     file: "avatar.js",
     description: `Show user(s) avatar(s)
-    Usage: sl!avatar userName anotherUser @someOtherUser`,
+    Usage: ${process.env.BOTPREFIX}avatar userName anotherUser @someOtherUser`,
+  },
+  {
+    command: "remind",
+    file: "remind.js",
+    description: `Remind something at some time
+    Usage: ${process.env.BOTPREFIX}remind "Some text here" DD HH:MM`,
   },
 ];
