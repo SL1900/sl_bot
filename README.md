@@ -8,4 +8,6 @@ My bad attempt at creating a scalable Discord Bot.
 - Ping (time between ping command and reply)
 - Remind (works like shit)
 
+
+Using Node.js wrapper [Eris](https://abal.moe/Eris/)
 [Invite link](https://discord.com/api/oauth2/authorize?client_id=701966708239237191&permissions=388160&scope=bot)
