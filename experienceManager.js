@@ -11,8 +11,8 @@ async function countMessage(db, message) {
     .db("sl_bot")
     .collection("experience")
     .findOne({ uID: message.author.id, gID: message.channel.guild.id });
-  console.log(currentTime - userDoc.lastTimestamp);
-  if (currentTime - userDoc.lastTimestamp < cooldown) return;
+  var diff = userDoc ? currentTime - userDoc.lastTimestamp : cooldown;
+  if (diff < cooldown) return;
   db.db("sl_bot")
     .collection("experience")
     .updateOne(

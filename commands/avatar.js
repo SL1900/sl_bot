@@ -9,6 +9,7 @@ module.exports = {
     var users = await findMembers(message.channel.guild, args);
     users = [...new Set(users)];
 
+    if (users.length == 0) invalidInput(message);
     for (var user of users) {
       showAvatar(user, message.channel);
     }
@@ -27,4 +28,8 @@ function showAvatar(user, channel) {
       color: 16777215,
     },
   });
+}
+
+function invalidInput(message) {
+  message.channel.createMessage({ embed: { description: "No users found" } });
 }
