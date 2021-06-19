@@ -10,7 +10,7 @@ module.exports = {
       });
       mongoClient.connect(function (err, db_client) {
         if (err) return console.log(err);
-        console.log("connected to db");
+        console.log("MongoDB connected");
         db = db_client;
         res(db_client);
       });

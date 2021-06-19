@@ -5,6 +5,7 @@ const CommandHandler = require("./CommandHandler");
 const helpSessionManager = require("./helpSessionManager");
 const { startTimer } = require("./timer");
 const sendMessage = require("./sendMessage");
+const experienceManager = require("./experienceManager");
 var BOT_PREFIX = process.env.BOTPREFIX;
 
 var db = null;
@@ -25,12 +26,16 @@ async function init() {
 }
 
 bot.on("ready", () => {
-  console.log("connected to discord");
+  var guildCount = bot.guilds.reduce((sum) => {
+    return ++sum;
+  }, 0);
+  console.log(`Bot connected to Discord\nNumber of guilds: ${guildCount}`);
   start();
 });
 
 function start() {
   bot.on("messageCreate", (message) => {
+    experienceManager.countMessage(db, message);
     if (!startsWith(message.content, BOT_PREFIX)) return;
 
     var args = message.content.slice(BOT_PREFIX.length).split(/ +/);
@@ -44,6 +49,5 @@ function start() {
 }
 
 function startsWith(text, prefix) {
-  var prefixLength = prefix.length;
-  return text.substring(0, prefixLength) == prefix;
+  return text.substring(0, prefix.length) == prefix;
 }
